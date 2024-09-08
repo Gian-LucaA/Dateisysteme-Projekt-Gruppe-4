@@ -59,7 +59,6 @@ bool BsFile::createFile(BsFat *pFat, size_t szFile, std::string filename, std::s
                 srand((unsigned int) time(nullptr));
                 for (int i = 0; blocksReserved < blocksNeeded; i < pFat->get_block_count() ? i++ : 0) {
                     if (pFat->get_block_states()[i].getBlockState() == FREE) {
-                        // if (rand() % 2) {
                             if (pFat->get_files()[fileIndex].bsCluster == nullptr) {
                                 pFat->get_files()[fileIndex].bsCluster = new BsCluster();
                                 if (pFat->get_files()[fileIndex].bsCluster == nullptr) {
@@ -73,7 +72,6 @@ bool BsFile::createFile(BsFat *pFat, size_t szFile, std::string filename, std::s
                                     BsCluster::appendBsCluster(pFat->get_files()[fileIndex].bsCluster, i));
                             }
                             blocksReserved++;
-                        // }
                     }
                 }
 
